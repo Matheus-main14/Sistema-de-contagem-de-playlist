@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Músicas de uma Playlist</title>
+  <link rel="stylesheet" href="./output.css">
+  <script src="./script.js" defer></script>
+</head>
+<body class="bg-indigo-950 text-indigo-50 leading-relaxed">
+
+  <header class="bg-indigo-900 border-b-2 border-indigo-700 px-4 py-6">
+    <div class="mx-auto flex max-w-5xl flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <div>
+        <h1 class="font-serif text-3xl font-bold leading-tight lg:text-4xl">
+          Painel de Músicas de uma Playlist
+        </h1>
+        <p class="mt-1 text-indigo-200">
+          Playlist: <span id="nome-playlist" class="font-bold text-amber-300">...</span>
+        </p>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <ul class="flex flex-wrap gap-2">
+          <li><a href="#sobre" class="block rounded-full border border-indigo-600 px-4 py-1.5 hover:border-amber-300 hover:bg-indigo-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-300">Sobre</a></li>
+          <li><a href="#musicas" class="block rounded-full border border-indigo-600 px-4 py-1.5 hover:border-amber-300 hover:bg-indigo-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-300">Músicas</a></li>
+          <li><a href="#resultados" class="block rounded-full border border-indigo-600 px-4 py-1.5 hover:border-amber-300 hover:bg-indigo-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-300">Resultados</a></li>
+          <li><a href="#dados" class="block rounded-full border border-indigo-600 px-4 py-1.5 hover:border-amber-300 hover:bg-indigo-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-amber-300">Como funciona</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 py-4">
+
+    <section id="sobre" class="scroll-mt-4 py-6">
+      <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        <img
+          src="../imagens/capa-playlist.svg"
+          alt="Capa da playlist: um disco de vinil amarelo e roxo sobre uma estrada tracejada"
+          width="144" height="144"
+          class="h-36 w-36 shrink-0 rounded-2xl shadow-md">
+        <div>
+          <h2 class="mb-2 font-serif text-2xl font-bold leading-tight">Sobre o painel</h2>
+          <p>
+            Este painel mostra uma playlist com seis músicas e a duração de cada uma em minutos.
+            A partir desses números, o JavaScript calcula a duração total, a média por música
+            e quantas faixas são curtas ou longas. No final, ele classifica a playlist inteira
+            como <strong>Curta</strong>, <strong>Média</strong> ou <strong>Longa</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="musicas" class="scroll-mt-4 border-t border-indigo-700 py-6">
+      <h2 class="mb-2 font-serif text-2xl font-bold leading-tight">Músicas da playlist</h2>
+      <p>Cada cartão mostra o nome da música, sua duração e se ela é curta ou longa.</p>
+      <!-- Os cartões são criados pelo JavaScript dentro desta lista -->
+      <ol id="lista-musicas" class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"></ol>
+    </section>
+
+    <section id="resultados" class="scroll-mt-4 border-t border-indigo-700 py-6">
+      <h2 class="mb-4 font-serif text-2xl font-bold leading-tight">Resultados calculados</h2>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-xl border border-indigo-700 bg-indigo-900 p-4 shadow-sm">
+          <h3 class="text-base text-indigo-200">Duração total</h3>
+          <p class="text-3xl font-bold" id="resultado-total">--</p>
+        </article>
+        <article class="rounded-xl border border-indigo-700 bg-indigo-900 p-4 shadow-sm">
+          <h3 class="text-base text-indigo-200">Média por música</h3>
+          <p class="text-3xl font-bold" id="resultado-media">--</p>
+        </article>
+        <article class="rounded-xl border border-indigo-700 bg-indigo-900 p-4 shadow-sm">
+          <h3 class="text-base text-indigo-200">Músicas curtas</h3>
+          <p class="text-3xl font-bold" id="resultado-curtas">--</p>
+        </article>
+        <article class="rounded-xl border border-indigo-700 bg-indigo-900 p-4 shadow-sm">
+          <h3 class="text-base text-indigo-200">Músicas longas</h3>
+          <p class="text-3xl font-bold" id="resultado-longas">--</p>
+        </article>
+      </div>
+
+      <article class="mt-4 rounded-xl border-2 border-amber-300 bg-indigo-800 p-5 shadow-md">
+        <h3 class="text-base text-indigo-200">Classificação da playlist</h3>
+        <p class="font-serif text-4xl font-bold text-amber-300" id="resultado-classificacao">--</p>
+        <p class="mt-1" id="explicacao-classificacao">--</p>
+      </article>
+    </section>
+
+    <section id="dados" class="scroll-mt-4 border-t border-indigo-700 py-6">
+      <h2 class="mb-2 font-serif text-2xl font-bold leading-tight">Como os dados são processados</h2>
+      <p>
+        Os seis dados usados nos cálculos são as durações, em minutos, das seis músicas
+        mostradas acima. Os limites abaixo são as referências usadas nas comparações:
+      </p>
+      <ul class="mt-4 space-y-2 border-l-4 border-amber-300 pl-4">
+        <li>
+          Música <strong>curta</strong>: duração menor que
+          <span id="regra-limite-musica" class="font-bold">--</span> min.
+        </li>
+        <li>
+          Música <strong>longa</strong>: duração igual ou maior que
+          <span id="regra-limite-musica-2" class="font-bold">--</span> min.
+        </li>
+        <li>
+          Playlist <strong>Curta</strong>: total menor que
+          <span id="regra-playlist-curta" class="font-bold">--</span> min.
+        </li>
+        <li>
+          Playlist <strong>Média</strong>: total de
+          <span id="regra-playlist-curta-2" class="font-bold">--</span> até menos de
+          <span id="regra-playlist-longa" class="font-bold">--</span> min.
+        </li>
+        <li>
+          Playlist <strong>Longa</strong>: total igual ou maior que
+          <span id="regra-playlist-longa-2" class="font-bold">--</span> min.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="border-t-2 border-indigo-700 bg-indigo-900 px-4 py-5 text-center text-indigo-200">
+    <p>Integrantes: Matheus Antony e Nicolas</p>
+    <p>Disciplina: Desenvolvimento Web Front-end </p>
+    <P> Docente: Luciano Alexandre </P>
+  </footer>
+
+</body>
+</html>
