@@ -11,14 +11,13 @@ const mostrarNoConsole = true;            // true mostra os resultados no Consol
 // DADOS - array com 6 objetos (duração em minutos)
 // ==========================================================
 const playlist = [
-  { nome: "Estrada de Sol",      duracao: 3.2 },
-  { nome: "Janela Aberta",       duracao: 4.5 },
-  { nome: "Posto de Gasolina",   duracao: 2.8 },
-  { nome: "Horizonte Longo",     duracao: 5.1 },
-  { nome: "Rádio Fora do Ar",    duracao: 3.9 },
-  { nome: "Chegada ao Mar",      duracao: 4.3 }
+  { nome: "Matuê - 777-666", duracao: 2.7 },
+  { nome: "Matuê - Gorila Roxo", duracao: 2.8 },
+  { nome: "Djonga - Leal", duracao: 3.5 },
+  { nome: "Djonga - Ladrão", duracao: 4.4 },
+  { nome: "Edson Gomes - Samarina (Ao Vivo)", duracao: 3.7 },
+  { nome: "Edson Gomes - Perdido de Amor (Ao Vivo)", duracao: 4.1 }
 ];
-
 // ==========================================================
 // FUNÇÕES DE CÁLCULO
 // ==========================================================
