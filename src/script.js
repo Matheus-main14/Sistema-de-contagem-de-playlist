@@ -90,27 +90,30 @@ function mostrarMusicas(lista) {
 
   lista.forEach(function (musica, indice) {
     const item = document.createElement("li");
-    item.className = "rounded-xl border border-indigo-700 bg-indigo-900 p-4 shadow-sm";
+    item.className = "rounded-lg bg-painel p-4 transition hover:-translate-y-1 hover:bg-painel-hover";
 
     const titulo = document.createElement("h3");
-    titulo.className = "mb-1 font-serif text-lg font-bold leading-tight";
+    titulo.className = "mb-1 text-base font-bold leading-tight text-white";
     titulo.textContent = `${indice + 1}. ${musica.nome}`;
 
     const duracao = document.createElement("p");
-    duracao.className = "text-2xl font-bold text-amber-300";
+    duracao.className = "text-2xl font-extrabold text-verde";
     duracao.textContent = `${formatarMinutos(musica.duracao)} min`;
 
     // Etiqueta escrita (não depende só de cor)
     const tipo = document.createElement("p");
-    tipo.className = "mb-3 text-indigo-200";
+    // Música curta: etiqueta só com borda verde. Música longa: etiqueta verde cheia.
+    tipo.className = ehCurta(musica.duracao)
+      ? "mb-3 inline-block rounded-full border border-verde px-3 py-0.5 text-xs font-bold text-verde"
+      : "mb-3 inline-block rounded-full bg-verde px-3 py-0.5 text-xs font-bold text-black";
     tipo.textContent = ehCurta(musica.duracao) ? "Música curta" : "Música longa";
 
     // Barra decorativa: 6 min = barra cheia (100%)
     const barra = document.createElement("div");
-    barra.className = "h-2 overflow-hidden rounded-full bg-indigo-950";
+    barra.className = "h-1 overflow-hidden rounded-full bg-neutral-700";
     barra.setAttribute("aria-hidden", "true");
     const preenchimento = document.createElement("div");
-    preenchimento.className = "h-full rounded-full bg-amber-300";
+    preenchimento.className = "h-full rounded-full bg-verde";
     preenchimento.style.width = `${(musica.duracao / 6) * 100}%`;
     barra.appendChild(preenchimento);
 

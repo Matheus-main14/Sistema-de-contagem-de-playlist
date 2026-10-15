@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+/* Cores do projeto (use assim no HTML: bg-fundo, text-verde, bg-painel...) */
+@theme {
+  --color-fundo: #121212;
+  --color-painel: #181818;
+  --color-painel-hover: #282828;
+  --color-verde: #1ed760;
+  --color-verde-escuro: #1a9f4a;
+  --color-texto-suave: #b3b3b3;
+}
