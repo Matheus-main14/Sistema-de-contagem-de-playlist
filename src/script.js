@@ -1,15 +1,11 @@
-// ==========================================================
-// CONFIGURAÇÕES - altere os valores abaixo para testar
-// ==========================================================
 const nomePlaylist = "Viagem de Estrada"; // texto (string)
 const LIMITE_MUSICA_LONGA = 4;            // música com 4 min ou mais é "longa"
 const LIMITE_PLAYLIST_CURTA = 20;         // total abaixo de 20 min = playlist "Curta"
 const LIMITE_PLAYLIST_LONGA = 30;         // total a partir de 30 min = playlist "Longa"
 const mostrarNoConsole = true;            // true mostra os resultados no Console (boolean)
 
-// ==========================================================
-// DADOS - array com 6 objetos (duração em minutos)
-// ==========================================================
+
+
 const playlist = [
   { nome: "Matuê - 777-666", duracao: 2.7 },
   { nome: "Matuê - Gorila Roxo", duracao: 2.8 },
@@ -18,9 +14,7 @@ const playlist = [
   { nome: "Edson Gomes - Samarina (Ao Vivo)", duracao: 3.7 },
   { nome: "Edson Gomes - Perdido de Amor (Ao Vivo)", duracao: 4.1 }
 ];
-// ==========================================================
-// FUNÇÕES DE CÁLCULO
-// ==========================================================
+
 
 // Soma a duração de todas as músicas
 function calcularTotal(lista) {
@@ -80,9 +74,6 @@ function formatarMinutos(valor) {
   return valor.toFixed(1).replace(".", ",");
 }
 
-// ==========================================================
-// FUNÇÕES QUE MOSTRAM AS INFORMAÇÕES NA PÁGINA
-// ==========================================================
 
 // Cria um cartão (item de lista) para cada música
 function mostrarMusicas(lista) {
@@ -161,9 +152,7 @@ function mostrarRegras() {
   document.getElementById("regra-playlist-longa-2").textContent = LIMITE_PLAYLIST_LONGA;
 }
 
-// ==========================================================
-// INÍCIO: o que roda quando a página abre
-// ==========================================================
+
 document.getElementById("nome-playlist").textContent = nomePlaylist;
 mostrarMusicas(playlist);
 mostrarResultados(playlist);
